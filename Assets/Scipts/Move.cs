@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class Move : MonoBehaviour
@@ -15,6 +16,11 @@ public class Move : MonoBehaviour
 
     public Feet Feet => _feet;
 
+    public event UnityAction<float> Moved;
+    public event UnityAction Stoped;
+    public event UnityAction Jumped;
+
+
     private void Start()
     {
         _rb = GetComponent<Rigidbody2D>();
@@ -26,10 +32,17 @@ public class Move : MonoBehaviour
         if (_horizontalInput != 0)
         {
             HandleMove();
+            Moved?.Invoke(_horizontalInput);
         }
+        else 
+        {
+            Stoped?.Invoke();
+        }
+
         if (_feet.Grounded == true && Input.GetButtonDown(JumpButton))
         {
             Jump();
+            Jumped?.Invoke();
         }
     }
 

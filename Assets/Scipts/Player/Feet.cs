@@ -14,8 +14,11 @@ public class Feet : MonoBehaviour
         Physics2D.IgnoreCollision(playerColllider, GetComponent<Collider2D>());
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerStay2D(Collider2D other)
     {
+        if (_grounded) 
+            return;
+
         Debug.Log("Collision Enter: " + other);
         if (IsGround(other))
         {

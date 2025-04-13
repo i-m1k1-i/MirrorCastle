@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[RequireComponent(typeof(Move), typeof(DimensionChanger))]
+[RequireComponent(typeof(Move), typeof(DimensionController))]
 public class Player : MonoBehaviour
 {
     private Move _move;
@@ -15,5 +15,13 @@ public class Player : MonoBehaviour
     {
         gameObject.layer = (int)layer;
         _move.Feet.gameObject.layer = (int)layer;
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            GameManager.Instance.LoadLevelSelector();
+        }
     }
 }

@@ -5,27 +5,36 @@ public class DimensionController : MonoBehaviour
     [SerializeField] private Player _player;
     // [SerializeField] private Canvas _turbidity;
     // [SerializeField] private Camera _realWorldCamera, _mirrorWorldCamera;
+    private readonly KeyCode ChangeKey = KeyCode.F;
 
-    private DimensionLayers _currentWorld;
+    private DimensionLayers _currentDimension;
 
 
     private void Start()
     {
-        _currentWorld = DimensionLayers.RealWorld;
+        _currentDimension = DimensionLayers.RealWorld;
     }
 
-    public void Switch()
+    private void Update()
     {
-        if (_currentWorld == DimensionLayers.MirrorWorld)
+        if (Input.GetKeyUp(ChangeKey))
+        {
+            Switch();
+        }
+    }
+
+    private void Switch()
+    {
+        if (_currentDimension == DimensionLayers.MirrorWorld)
         {
             // SetTurbidityCamera(_mirrorWorldCamera);
-            _currentWorld = DimensionLayers.RealWorld;
+            _currentDimension = DimensionLayers.RealWorld;
             _player.SetLayer(DimensionLayers.RealWorld);
         }
         else
         {
             // SetTurbidityCamera(_realWorldCamera);
-            _currentWorld = DimensionLayers.MirrorWorld;
+            _currentDimension = DimensionLayers.MirrorWorld;
             _player.SetLayer(DimensionLayers.MirrorWorld);
         }
     }
