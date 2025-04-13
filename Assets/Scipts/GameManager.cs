@@ -28,6 +28,12 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void RestartLevel()
+    {
+        Scene currentScene = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(currentScene.buildIndex);
+    }
+
     public void LoadLevelSelector()
     {
         SceneManager.LoadScene("LevelSelector");

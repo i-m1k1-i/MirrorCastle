@@ -9,13 +9,13 @@ public class PlayerAnimationController : MonoBehaviour
 
     private Animator _animator;
     private SpriteRenderer _spriteRenderer;
-    private Move _mover;
+    private Mover _mover;
 
     private void Awake()
     {
         _animator = GetComponent<Animator>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
-        _mover = GetComponent<Move>();
+        _mover = GetComponent<Mover>();
     }
 
     private void OnEnable()

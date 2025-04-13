@@ -20,6 +20,12 @@ MonoBehaviour:
     uniqueID: 000
     playerPhoto: demo image
     payingStatus: 0
+  InterstitialAdv:
+    showFirstAdv: 1
+    interAdvInterval: 60
+    postponeCallByFail: 0
+    postponeCallTimer: 10
+    labelAdvSimLabel: 0
   Storage:
     saveLocal: 0
     saveCloud: 1
@@ -70,12 +76,15 @@ MonoBehaviour:
       color2: {r: 0.36, g: 0.09, b: 1, a: 1}
     pixelRatioEnable: 0
     pixelRatioValue: 1.3
-    developerBuild: 1
+    developerBuild: 0
   platformInfo:
     ownHost: 0
   platformToggles:
+    showFirstAdv: 1
+    interAdvInterval: 0
+    postponeCallByFail: 0
     saveLocal: 0
-    saveCloud: 0
+    saveCloud: 1
     selectWebGLTemplate: 1
     runInBackground: 1
     enableExceptions: 1

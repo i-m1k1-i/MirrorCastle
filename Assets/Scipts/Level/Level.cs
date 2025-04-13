@@ -21,7 +21,7 @@ public class Level : MonoBehaviour
         int nextLevelNumber = _levelNumber + 1;
         string nextLevelName = NamePrefix + nextLevelNumber;
 
-        bool sceneExist = (SceneUtility.GetBuildIndexByScenePath("path or name of the scene") != -1);
+        bool sceneExist = (SceneUtility.GetBuildIndexByScenePath(nextLevelName) != -1);
 
         if (sceneExist)
         {

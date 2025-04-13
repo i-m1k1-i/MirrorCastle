@@ -2,53 +2,57 @@ using UnityEngine;
 using UnityEngine.Events;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class Move : MonoBehaviour
+public class Mover : MonoBehaviour
 {
-    private readonly string Horizontal = nameof(Horizontal);
-    private readonly string JumpButton = nameof(Jump);
-
     [SerializeField, Range(1, 50)] private float _moveSpeed = 1;
     [SerializeField, Range(1, 50)] private float _jumpForce = 1f;
+
     [SerializeField] private Feet _feet;
 
     private Rigidbody2D _rb;
-    private float _horizontalInput;
 
     public Feet Feet => _feet;
 
+    // Events for player animator
     public event UnityAction<float> Moved;
     public event UnityAction Stoped;
     public event UnityAction Jumped;
 
+
+    public void TryJump()
+    {
+        if (_feet.Grounded == true)
+        {
+            Jump();
+            Jumped?.Invoke();
+        }
+        else
+        {
+            Debug.Log("Jump failed");
+        }
+    }
+
+    public void TryMove(float moveInput)
+    {
+        if (moveInput != 0)
+        {
+            Move(moveInput);
+            Moved?.Invoke(moveInput);
+        }
+        else
+        {
+            Stoped?.Invoke();
+        }
+    }
 
     private void Start()
     {
         _rb = GetComponent<Rigidbody2D>();
     }
 
-    private void Update()
+    private void Move(float moveInput)
     {
-        _horizontalInput = Input.GetAxis(Horizontal);
-        if (_horizontalInput != 0)
-        {
-            HandleMove();
-            Moved?.Invoke(_horizontalInput);
-        }
-        else 
-        {
-            Stoped?.Invoke();
-        }
-
-        if (_feet.Grounded == true && Input.GetButtonDown(JumpButton))
-        {
-            Jump();
-            Jumped?.Invoke();
-        }
-    }
-
-    private void HandleMove()
-    {
-        float moveX = _horizontalInput * _moveSpeed * Time.deltaTime;
+        float moveX = moveInput * _moveSpeed * Time.deltaTime;
         Vector3 move = new(moveX, 0, 0);
 
         transform.position += move;
