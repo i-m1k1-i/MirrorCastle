@@ -25,6 +25,6 @@ public class DimensionController : MonoBehaviour
             _currentDimension = DimensionLayers.MirrorWorld;
             _player.SetLayer(DimensionLayers.MirrorWorld);
         }
-        // тестовое изменение
+        // тестовое изменение 1
     }
 }
