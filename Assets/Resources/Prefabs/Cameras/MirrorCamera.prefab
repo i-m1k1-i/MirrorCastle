@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2237387438139484146}
   - component: {fileID: 3155556413825993385}
   - component: {fileID: 7533846952154545609}
+  - component: {fileID: 1793688872115637151}
   m_Layer: 8
   m_Name: MirrorCamera
   m_TagString: MainCamera
@@ -162,3 +163,17 @@ MonoBehaviour:
   blendDistance: 0
   weight: 1
   priority: 0
+--- !u!114 &1793688872115637151
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2887886496460777735}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe8991d21c78ea344b9bb55e8cbf63d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DefaultResolution: {x: 1280, y: 360}
+  WidthOrHeight: 0

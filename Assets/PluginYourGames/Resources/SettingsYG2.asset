@@ -44,10 +44,10 @@ MonoBehaviour:
     loadSceneIndex: 0
     simulationLoadScene: 0
   Simulation:
-    device: 0
+    device: 1
     language: ru
-    advIntervalSimulation: 60
-    durationAdv: 0.5
+    advIntervalSimulation: 25
+    durationAdv: 2
     loadAdv: 0
     testFailAds: 0
   Templates:

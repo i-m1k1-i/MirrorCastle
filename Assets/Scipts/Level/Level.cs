@@ -1,10 +1,10 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using YG;
 
 public class Level : MonoBehaviour
 {
-    public const string NamePrefix = "Level";
-    public const string LevelSelectorName = "LevelSelector";
+    public const string LevelNamePrefix = "Level";
 
     [SerializeField] private int _levelNumber;
 
@@ -12,24 +12,26 @@ public class Level : MonoBehaviour
 
     private void Start()
     {
-        _levelNumber = int.Parse(SceneManager.GetActiveScene().name.Replace(NamePrefix, ""));
-        GameManager.Instance.UnlockLevel(_levelNumber);
+        _levelNumber = int.Parse(SceneManager.GetActiveScene().name.Replace(LevelNamePrefix, ""));
     }
 
     public void LoadNextLevel()
     {
         int nextLevelNumber = _levelNumber + 1;
-        string nextLevelName = NamePrefix + nextLevelNumber;
+        string nextLevelName = LevelNamePrefix + nextLevelNumber;
 
         bool sceneExist = (SceneUtility.GetBuildIndexByScenePath(nextLevelName) != -1);
 
         if (sceneExist)
         {
+            GameManager.Instance.UnlockLevel(nextLevelNumber);
             SceneManager.LoadScene(nextLevelName);
         }
         else
         {
-            SceneManager.LoadScene(LevelSelectorName);
-        }   
+            SceneManager.LoadScene(GameManager.LevelSelectorScene);
+        }
+
+        YG2.InterstitialAdvShow();
     }
 }

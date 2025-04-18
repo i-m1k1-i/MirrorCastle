@@ -1,4 +1,5 @@
 using UnityEngine;
+using YG;
 
 [RequireComponent(typeof(Mover), typeof(DimensionController))]
 public class Player : MonoBehaviour
@@ -23,6 +24,9 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
+        if (YG2.isPauseGame)
+            return;
+
         _mover.TryMove(_input.MoveInput);
     }
 

@@ -8,7 +8,7 @@ public class MoveStaying : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collider)
     {
         Debug.Log("Triiger enter: " + collider);
-        if (collider.gameObject.TryGetComponent<Feet>(out Feet feet) == false)
+        if (collider.TryGetComponent<Feet>(out Feet feet) == false)
         {
             return;
         }
@@ -21,11 +21,10 @@ public class MoveStaying : MonoBehaviour
     private void OnTriggerExit2D(Collider2D collider)
     {
         Debug.Log("Triiger exit: " + collider) ;
-        if (collider.gameObject.TryGetComponent<Feet>(out Feet feet) == false)
+        if (collider.TryGetComponent<Feet>(out Feet feet) == false)
         {
             return;
         }
-
         if (_player == null)
         { 
             return; 

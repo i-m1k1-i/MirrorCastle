@@ -15,7 +15,7 @@ public class LevelButtonsGrid : MonoBehaviour
         {
             levelButtons[i].SetLevel(i + 1);
         }
-        
+
         EditorUtility.SetDirty(this);
     }
 }

@@ -18,7 +18,6 @@ public class Mover : MonoBehaviour
     public event UnityAction Stoped;
     public event UnityAction Jumped;
 
-
     public void TryJump()
     {
         if (_feet.Grounded == true)

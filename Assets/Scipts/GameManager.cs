@@ -4,6 +4,9 @@ using YG;
 
 public class GameManager : MonoBehaviour
 {
+    public const string LevelSelectorScene = "LevelSelector";
+    public const string MainMenuScene = "Menu";
+
     public static GameManager Instance;
 
     private void Awake()
@@ -36,6 +39,6 @@ public class GameManager : MonoBehaviour
 
     public void LoadLevelSelector()
     {
-        SceneManager.LoadScene("LevelSelector");
+        SceneManager.LoadScene(LevelSelectorScene);
     }
 }
