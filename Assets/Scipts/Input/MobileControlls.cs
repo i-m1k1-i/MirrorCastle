@@ -1,7 +1,6 @@
 using UnityEngine;
 using YG;
 using UnityEngine.SceneManagement;
-using static UnityEngine.AudioSettings;
 
 public class MobileControlls : MonoBehaviour
 {
@@ -9,37 +8,35 @@ public class MobileControlls : MonoBehaviour
     {
         if (YG2.envir.isDesktop)
         {
-            MobileControllsOff();
             Destroy(gameObject);
         }
         else
         {
-            MobileControllsOn();
             DontDestroyOnLoad(gameObject);
         }
 
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
-    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
-    {
-        if (scene.name == GameManager.LevelSelectorScene || scene.name == GameManager.MainMenuScene)
-        {
-            MobileControllsOff();
-        }
-        else
-        {
-            MobileControllsOn();
-        }
-    }
-
-    public void MobileControllsOff()
+    public void Disable()
     {
         gameObject.SetActive(false);
     }
 
-    public void MobileControllsOn()
+    public void Enable()
     {
         gameObject.SetActive(true);
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (scene.name == GameManager.LevelSelectorScene || scene.name == GameManager.MainMenuScene)
+        {
+            Disable();
+        }
+        else
+        {
+            Enable();
+        }
     }
 }

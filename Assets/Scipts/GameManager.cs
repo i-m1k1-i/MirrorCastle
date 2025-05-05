@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using TMPro;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 using YG;
 
@@ -8,6 +9,11 @@ public class GameManager : MonoBehaviour
     public const string MainMenuScene = "Menu";
 
     public static GameManager Instance;
+
+    [SerializeField] private BackgroundMusic _backgroundMusic;
+    [SerializeField] private InputReader _input;
+
+    public bool PlayGameCompletedAnimation { get; private set; }
 
     private void Awake()
     {
@@ -40,5 +46,24 @@ public class GameManager : MonoBehaviour
     public void LoadLevelSelector()
     {
         SceneManager.LoadScene(LevelSelectorScene);
+    }
+
+    public void LastLevelCompleted()
+    {
+        PlayGameCompletedAnimation = true;
+    }
+
+    public void SetPause(bool pause)
+    {
+        if (pause)
+        {
+            _backgroundMusic.Pause();
+            _input.DisablePlayerInput();
+        }
+        else
+        {
+            _backgroundMusic.UnPause();
+            _input.EnablePlayerInput();
+        }
     }
 }

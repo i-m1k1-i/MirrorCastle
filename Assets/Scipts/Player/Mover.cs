@@ -18,20 +18,16 @@ public class Mover : MonoBehaviour
     public event UnityAction Stoped;
     public event UnityAction Jumped;
 
-    public void TryJump()
+    public void HandleJump()
     {
         if (_feet.Grounded == true)
         {
             Jump();
             Jumped?.Invoke();
         }
-        else
-        {
-            Debug.Log("Jump failed");
-        }
     }
 
-    public void TryMove(float moveInput)
+    public void HandleMove(float moveInput)
     {
         if (moveInput != 0)
         {

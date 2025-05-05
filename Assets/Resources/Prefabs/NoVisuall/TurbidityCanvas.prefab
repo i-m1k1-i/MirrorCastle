@@ -11,8 +11,7 @@ GameObject:
   - component: {fileID: 1399272241703697799}
   - component: {fileID: 705387748453076539}
   - component: {fileID: 3846401545557116669}
-  - component: {fileID: 4878206031058130001}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: TurbidityCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -57,7 +56,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_VertexColorAlwaysGammaSpace: 1
-  m_AdditionalShaderChannelsFlag: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 3
@@ -85,23 +84,6 @@ MonoBehaviour:
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
   m_PresetInfoIsWorld: 0
---- !u!114 &4878206031058130001
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2378137724167038181}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_IgnoreReversedGraphics: 1
-  m_BlockingObjects: 0
-  m_BlockingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
 --- !u!1 &3094193944242648754
 GameObject:
   m_ObjectHideFlags: 0
@@ -113,7 +95,7 @@ GameObject:
   - component: {fileID: 8479339811082185113}
   - component: {fileID: 6195318639850932113}
   - component: {fileID: 2216489306629587559}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}

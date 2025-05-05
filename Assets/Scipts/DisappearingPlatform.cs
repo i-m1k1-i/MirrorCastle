@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using DG.Tweening;
 
 [RequireComponent(typeof(Collider2D), typeof(SpriteRenderer))]
 public class DisappearingPlatform : MonoBehaviour
@@ -19,23 +20,16 @@ public class DisappearingPlatform : MonoBehaviour
         if (other.TryGetComponent<Feet>(out Feet _))
         {
             Debug.Log("Disappearing");
-            StartCoroutine(Disappear());
+            Disappear();
         }
+         // Doing platform transparent by time
     }
 
-    private IEnumerator Disappear()
+    private void Disappear()
     {
-        float time = 0f;
-        Color color = _spriteRenderer.color;
-
-        while (time <= _timeToDisappear)
-        {
-            time += Time.deltaTime;
-            color.a = Mathf.Lerp(1f, 0f, time / _timeToDisappear); // Doing platform transparent by time
-            _spriteRenderer.color = color;
-            yield return null;
-        }
-
-        gameObject.SetActive(false);
+        Color disapearedColor = _spriteRenderer.color;
+        disapearedColor.a = 0f;
+        _spriteRenderer.DOColor(disapearedColor, _timeToDisappear)
+            .OnComplete(() => gameObject.SetActive(false));
     }
 }

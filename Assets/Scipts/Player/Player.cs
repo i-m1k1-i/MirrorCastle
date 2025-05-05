@@ -9,7 +9,6 @@ public class Player : MonoBehaviour
     private DimensionController _dimensionController;
     private Mover _mover;
 
-
     public void SetLayer(DimensionLayers layer)
     {
         gameObject.layer = (int)layer;
@@ -27,24 +26,19 @@ public class Player : MonoBehaviour
         if (YG2.isPauseGame)
             return;
 
-        _mover.TryMove(_input.MoveInput);
+        _mover.HandleMove(_input.MoveInput);
     }
+
 
     private void OnEnable()
     {
         _input.SwitchDimensionEvent += _dimensionController.Switch;
-        _input.JumpEvent += _mover.TryJump;
-
-        _input.RestartLevelEvent += GameManager.Instance.RestartLevel;
-        _input.LevelSelectorEvent += GameManager.Instance.LoadLevelSelector;
+        _input.JumpEvent += _mover.HandleJump;
     }
 
     private void OnDisable()
     {
         _input.SwitchDimensionEvent -= _dimensionController.Switch;
-        _input.JumpEvent -= _mover.TryJump;
-
-        _input.RestartLevelEvent -= GameManager.Instance.RestartLevel;
-        _input.LevelSelectorEvent -= GameManager.Instance.LoadLevelSelector;
+        _input.JumpEvent -= _mover.HandleJump;
     }
 }
