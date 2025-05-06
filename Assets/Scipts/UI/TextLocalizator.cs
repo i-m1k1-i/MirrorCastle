@@ -9,12 +9,12 @@ public class TextLocalizator : MonoBehaviour
     [Space(10)]
     [SerializeField, TextArea] private string _textRu;
 
-    private TextMeshProUGUI _textMP;
+    private TextMeshProUGUI _textMeshPro;
 
 
     private void Awake()
     {
-        _textMP = GetComponent<TextMeshProUGUI>();
+        _textMeshPro = GetComponent<TextMeshProUGUI>();
         Localize();
     }
 
@@ -22,11 +22,11 @@ public class TextLocalizator : MonoBehaviour
     {
         if (YG2.envir.language == Language.Russian)
         {
-            _textMP.text = _textRu;
+            _textMeshPro.text = _textRu;
         }
         else
         {
-            _textMP.text = _textEn;
+            _textMeshPro.text = _textEn;
         }
     }
 }

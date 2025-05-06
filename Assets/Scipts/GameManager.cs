@@ -1,5 +1,4 @@
-﻿using TMPro;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 using YG;
 
@@ -43,7 +42,7 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(currentScene.buildIndex);
     }
 
-    public void LoadLevelSelector()
+    public void OpenLevelSelectorScene()
     {
         SceneManager.LoadScene(LevelSelectorScene);
     }

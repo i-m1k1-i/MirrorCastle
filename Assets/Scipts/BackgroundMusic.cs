@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(AudioSource))]
-public class BackgroundMusic : MonoBehaviour
+public class BackgroundMusic : MonoBehaviour, IPauseable
 {
     public static BackgroundMusic Instance;
 
@@ -21,13 +21,13 @@ public class BackgroundMusic : MonoBehaviour
         }
     }
 
-    public void UnPause()
-    {
-        _source.UnPause();
-    }
-
     public void Pause()
     {
         _source.Pause();
+    }
+
+    public void UnPause()
+    {
+        _source.UnPause();
     }
 }
