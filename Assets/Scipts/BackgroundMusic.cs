@@ -13,7 +13,6 @@ public class BackgroundMusic : MonoBehaviour, IPauseable
         {
             Instance = this;
             _source = GetComponent<AudioSource>();
-            DontDestroyOnLoad(gameObject);
         }
         else
         {

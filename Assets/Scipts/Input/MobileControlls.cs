@@ -1,6 +1,6 @@
 using UnityEngine;
-using YG;
 using UnityEngine.SceneManagement;
+using YG;
 
 public class MobileControlls : MonoBehaviour
 {
@@ -13,19 +13,18 @@ public class MobileControlls : MonoBehaviour
         else
         {
             DontDestroyOnLoad(gameObject);
+            SceneManager.sceneLoaded += OnSceneLoaded;
         }
-
-        SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
-    public void Disable()
-    {
-        gameObject.SetActive(false);
-    }
-
-    public void Enable()
+    private void Enable()
     {
         gameObject.SetActive(true);
+    }
+
+    private void Disable()
+    {
+        gameObject.SetActive(false);
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
@@ -38,5 +37,10 @@ public class MobileControlls : MonoBehaviour
         {
             Enable();
         }
+    }
+
+    private void OnDestroy()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 }

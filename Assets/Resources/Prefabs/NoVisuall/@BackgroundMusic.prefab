@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8326980362721472639}
   - component: {fileID: 7915456013810020387}
   m_Layer: 0
-  m_Name: BackgroundMusic
+  m_Name: '@BackgroundMusic'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 7429387550441427736}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.6163716, y: 1.8579633, z: -0.10598265}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -56,6 +56,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 3a7def676fcce144e8c828fb31fca735, type: 3}
+  m_Resource: {fileID: 8300000, guid: 3a7def676fcce144e8c828fb31fca735, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1

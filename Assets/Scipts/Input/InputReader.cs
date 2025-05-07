@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
@@ -7,6 +8,8 @@ public class InputReader : ScriptableObject, GameInput.IPlayerActions, GameInput
 {
     private GameInput _input;
 
+    private bool _canMove = true;
+
     public float MoveInput => _input.Player.Move.ReadValue<float>();
 
     public event UnityAction SwitchDimensionEvent;
@@ -15,6 +18,8 @@ public class InputReader : ScriptableObject, GameInput.IPlayerActions, GameInput
     public event UnityAction RestartLevelEvent;
     public event UnityAction LevelSelectorEvent;
     public event UnityAction PauseEvent;
+
+
 
     private void OnEnable()
     {

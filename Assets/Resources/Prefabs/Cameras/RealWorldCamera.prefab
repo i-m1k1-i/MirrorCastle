@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 5347411943029746936}
   - component: {fileID: 4007516277601969373}
   - component: {fileID: 4235774788616129271}
-  - component: {fileID: 3726150602216935900}
+  - component: {fileID: 5479169776349288925}
   m_Layer: 0
   m_Name: RealWorldCamera
-  m_TagString: MainCamera
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -93,7 +93,7 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4813452607773646779}
   m_Enabled: 1
---- !u!114 &3726150602216935900
+--- !u!114 &5479169776349288925
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -102,8 +102,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 4813452607773646779}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe8991d21c78ea344b9bb55e8cbf63d1, type: 3}
+  m_Script: {fileID: 11500000, guid: 3d832d002a34b0d47804492a9ad517dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DefaultResolution: {x: 1280, y: 360}
-  WidthOrHeight: 0
+  half: 0
+  targetResolution: {x: 16, y: 9}

@@ -1,47 +1,68 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class UIInputHandler : MonoBehaviour
 {
-    [SerializeField] private GameObject _pauseMenu;
+    [SerializeField] private GameObject _pauseMenuGO;
     [SerializeField] private InputReader _input;
+
+    private bool _canPauseInScene = false;
 
     private void OnEnable()
     {
-        _pauseMenu.SetActive(false);
-
         _input.PauseEvent += TogglePauseMenu;
-        _input.RestartLevelEvent += RestartLevel;
-        _input.LevelSelectorEvent += OpenLevelSelectorScene;
+        _input.RestartLevelEvent += OnRestartLevel;
+        _input.LevelSelectorEvent += OnOpenLevelSelectorScene;
+
+        SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
     private void OnDisable()
     {
         _input.PauseEvent -= TogglePauseMenu;
-        _input.RestartLevelEvent -= RestartLevel;
-        _input.LevelSelectorEvent -= OpenLevelSelectorScene;
+        _input.RestartLevelEvent -= OnRestartLevel;
+        _input.LevelSelectorEvent -= OnOpenLevelSelectorScene;
     }
 
-    private void TogglePauseMenu()
+    private void OnSceneLoaded(Scene scene, LoadSceneMode loadSceneMode)
     {
-        _pauseMenu.SetActive(!_pauseMenu.activeSelf);
-        GameManager.Instance.SetPause(_pauseMenu.activeSelf);
+        if (scene.name == GameManager.LevelSelectorScene || scene.name == GameManager.MainMenuScene)
+        {
+            _canPauseInScene = false;
+            DisablePauseMenu();
+        }
+        else
+        {
+            _canPauseInScene = true;
+        }
     }
 
-    private void RestartLevel()
+    public void OnRestartLevel()
     {
         GameManager.Instance.RestartLevel();
         DisablePauseMenu();
     }
 
-    private void OpenLevelSelectorScene()
+    public void OnOpenLevelSelectorScene()
     {
         GameManager.Instance.OpenLevelSelectorScene();
         DisablePauseMenu();
     }
 
-    private void DisablePauseMenu()
+    public void DisablePauseMenu()
     {
-        _pauseMenu.SetActive(false);
+        _pauseMenuGO.SetActive(false);
         GameManager.Instance.SetPause(false);
+    }
+
+    private void TogglePauseMenu()
+    {
+        if (_canPauseInScene == false)
+        {
+            return;
+        }
+
+        _pauseMenuGO.SetActive(!_pauseMenuGO.activeSelf);
+        GameManager.Instance.SetPause(_pauseMenuGO.activeSelf);
     }
 }

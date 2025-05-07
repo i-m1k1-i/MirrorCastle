@@ -57,11 +57,13 @@ public class GameManager : MonoBehaviour
         if (pause)
         {
             _backgroundMusic.Pause();
+            Time.timeScale = 0;
             _input.DisablePlayerInput();
         }
         else
         {
             _backgroundMusic.UnPause();
+            Time.timeScale = 1;
             _input.EnablePlayerInput();
         }
     }
