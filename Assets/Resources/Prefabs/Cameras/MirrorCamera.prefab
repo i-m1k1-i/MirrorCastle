@@ -175,5 +175,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d832d002a34b0d47804492a9ad517dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  half: 1
-  targetResolution: {x: 16, y: 9}
+  _half: 1
+  _targetResolution: {x: 16, y: 9}

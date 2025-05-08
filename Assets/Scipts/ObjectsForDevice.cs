@@ -33,6 +33,7 @@ public class ObjectsForDevice : MonoBehaviour
             }
         }
     }
+
     private bool IsHandled(YG2.Device device)
     {
         return device == YG2.Device.Mobile || device == YG2.Device.Tablet;

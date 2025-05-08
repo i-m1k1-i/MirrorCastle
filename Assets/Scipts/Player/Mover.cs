@@ -13,7 +13,6 @@ public class Mover : MonoBehaviour
 
     public Feet Feet => _feet;
 
-    // Events for player animator
     public event UnityAction<float> Moved;
     public event UnityAction Stoped;
     public event UnityAction Jumped;

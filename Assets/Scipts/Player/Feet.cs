@@ -5,6 +5,7 @@ public class Feet : MonoBehaviour
     private readonly string Ground = nameof(Ground);
 
     [SerializeField] private bool _grounded = false;
+
     public bool Grounded => _grounded;
 
 

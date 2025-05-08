@@ -32,7 +32,7 @@ public class TextAppearanceAnimation : MonoBehaviour, IAnimation
         _animation.SetInitialState();
     }
 
-    public IEnumerator StartAnimationWithDelay()
+    private IEnumerator StartAnimationWithDelay()
     {
         SetInitialState();
 

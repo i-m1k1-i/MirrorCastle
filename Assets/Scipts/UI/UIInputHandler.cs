@@ -3,8 +3,8 @@ using UnityEngine.SceneManagement;
 
 public class UIInputHandler : MonoBehaviour
 {
-    [SerializeField] private GameObject _pauseMenuGO;
     [SerializeField] private InputReader _input;
+    [SerializeField] private GameObject _pauseMenuGO;
 
     private bool _canPauseInScene = false;
 
@@ -49,7 +49,7 @@ public class UIInputHandler : MonoBehaviour
         DisablePauseMenu();
     }
 
-    public void DisablePauseMenu()
+    private void DisablePauseMenu()
     {
         _pauseMenuGO.SetActive(false);
         GameManager.Instance.SetPause(false);
@@ -63,6 +63,7 @@ public class UIInputHandler : MonoBehaviour
         }
 
         _pauseMenuGO.SetActive(!_pauseMenuGO.activeSelf);
+
         GameManager.Instance.SetPause(_pauseMenuGO.activeSelf);
     }
 }

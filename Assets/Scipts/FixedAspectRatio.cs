@@ -5,8 +5,8 @@ public class FixedAspectRatio : MonoBehaviour
 {
     public enum ScreenHalf { Top, Bottom }
 
-    [SerializeField] private ScreenHalf half = ScreenHalf.Top;
-    [SerializeField] private Vector2 targetResolution = new Vector2(16, 9);
+    [SerializeField] private ScreenHalf _half = ScreenHalf.Top;
+    [SerializeField] private Vector2 _targetResolution = new Vector2(16, 9);
 
     private Camera _camera;
     private int _lastScreenWidth;
@@ -31,7 +31,7 @@ public class FixedAspectRatio : MonoBehaviour
         _lastScreenWidth = Screen.width;
         _lastScreenHeight = Screen.height;
 
-        float targetAspect = targetResolution.x / targetResolution.y;
+        float targetAspect = _targetResolution.x / _targetResolution.y;
         float screenAspect = (float)Screen.width / (float)Screen.height;
         float scaleHeight = screenAspect / targetAspect;
 
@@ -43,7 +43,7 @@ public class FixedAspectRatio : MonoBehaviour
             rect.y = (1f - scaleHeight) / 2f;
 
             rect.height *= 0.5f;
-            rect.y += (half == ScreenHalf.Top) ? 0.5f * scaleHeight : 0f;
+            rect.y += (_half == ScreenHalf.Top) ? 0.5f * scaleHeight : 0f;
         }
         else
         {
@@ -53,7 +53,7 @@ public class FixedAspectRatio : MonoBehaviour
             rect.x = (1f - scaleWidth) / 2f;
 
             rect.height = 0.5f;
-            rect.y = (half == ScreenHalf.Top) ? 0.5f : 0f;
+            rect.y = (_half == ScreenHalf.Top) ? 0.5f : 0f;
         }
 
         _camera.rect = rect;

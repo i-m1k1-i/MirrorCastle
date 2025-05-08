@@ -3689,6 +3689,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7903b8452f72a044db5ee164b44c6c3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _backgroundMusic: {fileID: 0}
+  _input: {fileID: 0}
 --- !u!4 &92389664
 Transform:
   m_ObjectHideFlags: 0
@@ -3715,22 +3717,6 @@ PrefabInstance:
     - target: {fileID: 4326163678615675150, guid: d37306d2c0589444e9d92e0b15627e56, type: 3}
       propertyPath: m_Name
       value: Canvas GameCompleted
-      objectReference: {fileID: 0}
-    - target: {fileID: 6332671492319445839, guid: d37306d2c0589444e9d92e0b15627e56, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 6332671492319445839, guid: d37306d2c0589444e9d92e0b15627e56, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 6332671492319445839, guid: d37306d2c0589444e9d92e0b15627e56, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6332671492319445839, guid: d37306d2c0589444e9d92e0b15627e56, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6747173343135307836, guid: d37306d2c0589444e9d92e0b15627e56, type: 3}
       propertyPath: m_Pivot.x

@@ -1,7 +1,6 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
-using DG.Tweening;
 
 public class CanvasGameCompleted : MonoBehaviour
 {
@@ -15,6 +14,7 @@ public class CanvasGameCompleted : MonoBehaviour
             gameObject.SetActive(false);
             return;
         }
+
         gameObject.SetActive(true);
         StartCoroutine(Animate());
     }

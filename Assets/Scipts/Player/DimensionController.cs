@@ -1,16 +1,12 @@
-using UnityEngine;
-
-public class DimensionController : MonoBehaviour
+public class DimensionController
 {
-    [SerializeField] private Player _player;
-
+    private IHasLayer _hasLayer;
     private DimensionLayers _currentDimension;
 
-
-    private void Awake()
+    public DimensionController(IHasLayer hasLayer, DimensionLayers layer)
     {
-        _player = GetComponent<Player>();
-        _currentDimension = DimensionLayers.RealWorld;
+        _hasLayer = hasLayer;
+        _currentDimension = layer;
     }
 
     public void Switch()
@@ -18,12 +14,12 @@ public class DimensionController : MonoBehaviour
         if (_currentDimension == DimensionLayers.MirrorWorld)
         {
             _currentDimension = DimensionLayers.RealWorld;
-            _player.SetLayer(DimensionLayers.RealWorld);
+            _hasLayer.SetLayer(DimensionLayers.RealWorld);
         }
         else
         {
             _currentDimension = DimensionLayers.MirrorWorld;
-            _player.SetLayer(DimensionLayers.MirrorWorld);
+            _hasLayer.SetLayer(DimensionLayers.MirrorWorld);
         }
     }
 }

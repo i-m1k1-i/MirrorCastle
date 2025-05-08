@@ -1,3 +1,3 @@
 Build path: E:/UnityProjects/MirrorCastle1/Build/HTMLBuild
-Build number: 6
+Build number: 11
 PluginYG version: 2.0032

@@ -1,8 +1,8 @@
 using UnityEngine;
 using YG;
 
-[RequireComponent(typeof(Mover), typeof(DimensionController))]
-public class Player : MonoBehaviour
+[RequireComponent(typeof(Mover))]
+public class Player : MonoBehaviour, IHasLayer
 {
     [SerializeField] private InputReader _input;
 
@@ -18,7 +18,7 @@ public class Player : MonoBehaviour
     private void Awake()
     {
         _mover = GetComponent<Mover>();
-        _dimensionController = GetComponent<DimensionController>();
+        _dimensionController = new DimensionController(this, DimensionLayers.RealWorld);
     }
 
     private void Update()
@@ -26,9 +26,8 @@ public class Player : MonoBehaviour
         if (YG2.isPauseGame)
             return;
 
-        _mover.HandleMove(_input.MoveInput);
+        _mover.HandleMove(_input.MoveInputValue);
     }
-
 
     private void OnEnable()
     {
