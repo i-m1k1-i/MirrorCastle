@@ -60,8 +60,11 @@ public class InputReader : ScriptableObject, GameInput.IPlayerActions, GameInput
             Debug.Log("Switch dimension event");
         }
     }
+
     public void OnMove(InputAction.CallbackContext context)
     {
+
+
         return;
     }
 
