@@ -12,7 +12,7 @@ public class PlatformAttachment : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collider)
     {
-        Debug.Log("Triiger enter: " + collider);
+        //Debug.Log("Triiger enter: " + collider);
 
         if (collider.TryGetComponent<MovingPlatform>(out MovingPlatform platform) == false)
         {
@@ -26,7 +26,7 @@ public class PlatformAttachment : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collider)
     {
-        Debug.Log("Triiger exit: " + collider);
+        //Debug.Log("Triiger exit: " + collider);
 
         if (collider.TryGetComponent<MovingPlatform>(out MovingPlatform _) == false)
         {

@@ -20,7 +20,7 @@ public class Feet : MonoBehaviour
         if (_grounded) 
             return;
 
-        Debug.Log("Collision Enter: " + other);
+        // Debug.Log("Collision Enter: " + other);
         if (IsGround(other))
         {
             _grounded = true;
@@ -29,7 +29,7 @@ public class Feet : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        Debug.Log("Collision Exit: " + other);
+        // Debug.Log("Collision Exit: " + other);
         if (IsGround(other))
         {
             _grounded = false;

@@ -56,6 +56,6 @@ public class Mover : MonoBehaviour
     {
         Vector2 jumpVector = new (0, _jumpForce);
         _rb.AddForce(jumpVector, ForceMode2D.Impulse);
-        Debug.Log("Jump complete");
+        // Debug.Log("Jump complete");
     }
 }

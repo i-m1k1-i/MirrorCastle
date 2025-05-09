@@ -48,7 +48,7 @@ public class InputReader : ScriptableObject, GameInput.IPlayerActions, GameInput
         if (context.performed)
         { 
             JumpEvent?.Invoke();
-            Debug.Log("Jump event");
+            // Debug.Log("Jump event");
         }
     }
 
@@ -57,14 +57,12 @@ public class InputReader : ScriptableObject, GameInput.IPlayerActions, GameInput
         if (context.performed)
         {
             SwitchDimensionEvent?.Invoke();
-            Debug.Log("Switch dimension event");
+            // Debug.Log("Switch dimension event");
         }
     }
 
     public void OnMove(InputAction.CallbackContext context)
     {
-
-
         return;
     }
 
