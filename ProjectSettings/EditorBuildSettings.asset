@@ -14,52 +14,52 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Levlels/Level2.unity
     guid: 71ff1f8d342e07b4c969b0e26b2ab82e
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Levlels/Level3.unity
     guid: 37152a524da68b14b8ff8d39f9e5c001
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Levlels/Level4.unity
     guid: 93b34c73aebca9a4698a09bcf346307c
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Levlels/Level5.unity
     guid: 2ca67a355d2eca143b7805eb4d864550
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Levlels/Level6.unity
     guid: 28444cca18300ca4bb641ac8b00e9450
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Levlels/Level7.unity
     guid: 3667d18f02452c24f9a70a0d53e29b31
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Levlels/Level8.unity
     guid: 92f4f18a7fbb48d479e8594db12764f6
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Levlels/Level9.unity
     guid: a7aa2f89feaa5974ea3acd3e18d995ef
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Levlels/Level10.unity
     guid: 6c2aed6fac6f94443aea0dd30b411de0
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Levlels/Level11.unity
     guid: 5a4aee248625ed24797fefbdbbc30c34
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Levlels/Level12.unity
     guid: fe10c791c84921e4da02384ca46a7661
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Levlels/Level13.unity
     guid: 3b63a41f2f1df314cadbdc8e2f951a61
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Levlels/Level14.unity
     guid: 1f3d19a4fa1525647af02422eff84916
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Levlels/Level15.unity
     guid: c3ce6a10079899a44a3cf06b4578c53d
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Levlels/Level16.unity
     guid: 5833968a61803734097d0a40fa071f8e
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Levlels/Level17.unity
     guid: 28ab7f45998bbbe4a9587ea1981a837f
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Levlels/Level18.unity
     guid: 45e7a8748d4c62540805f834533b9b92
   - enabled: 1
