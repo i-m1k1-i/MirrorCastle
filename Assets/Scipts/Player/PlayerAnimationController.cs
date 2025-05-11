@@ -1,35 +1,31 @@
 using UnityEngine;
 
-public class PlayerAnimationController : MonoBehaviour
+public class PlayerAnimationController : System.IDisposable
 {
     private readonly string Moving = nameof(Moving);
 
-    [SerializeField] private Animator _transparentAnimator;
-    [SerializeField] private SpriteRenderer _transparentSpriteRenderer;
+    private readonly Animator _mainAnimator;
+    private readonly SpriteRenderer _mainSpriteRenderer;
+    private readonly Animator _transparentAnimator;
+    private readonly SpriteRenderer _transparentSpriteRenderer;
+    private readonly IMover _mover;
 
-    private Animator _animator;
-    private SpriteRenderer _spriteRenderer;
-    private Mover _mover;
-
-    private void Awake()
+    public PlayerAnimationController(
+        Animator mainAnimator,
+        SpriteRenderer mainSpriteRenderer,
+        Animator transparentAnimator,
+        SpriteRenderer transparentSpriteRenderer,
+        IMover mover)
     {
-        _animator = GetComponent<Animator>();
-        _spriteRenderer = GetComponent<SpriteRenderer>();
-        _mover = GetComponent<Mover>();
-    }
+        _mainAnimator = mainAnimator;
+        _mainSpriteRenderer = mainSpriteRenderer;
+        _transparentAnimator = transparentAnimator;
+        _transparentSpriteRenderer = transparentSpriteRenderer;
+        _mover = mover;
 
-    private void OnEnable()
-    {
         _mover.Moved += OnMoved;
         _mover.Stoped += OnStoped;
         _mover.Jumped += OnJumped;
-    }
-
-    private void OnDisable()
-    {
-        _mover.Moved -= OnMoved;
-        _mover.Stoped -= OnStoped;
-        _mover.Jumped -= OnJumped;
     }
 
     private void OnMoved(float direction)
@@ -58,13 +54,20 @@ public class PlayerAnimationController : MonoBehaviour
 
     private void SetMoving(bool moving)
     {
-        _animator.SetBool(Moving, moving);
+        _mainAnimator.SetBool(Moving, moving);
         _transparentAnimator.SetBool(Moving, moving);
     }
 
     private void SetFlipX(bool flipX)
     {
-        _spriteRenderer.flipX = flipX;
+        _mainSpriteRenderer.flipX = flipX;
         _transparentSpriteRenderer.flipX = flipX;
+    }
+
+    public void Dispose()
+    {
+        _mover.Moved -= OnMoved;
+        _mover.Stoped -= OnStoped;
+        _mover.Jumped -= OnJumped;
     }
 }

@@ -44,8 +44,8 @@ MonoBehaviour:
     loadSceneIndex: 0
     simulationLoadScene: 0
   Simulation:
-    device: 1
-    language: ru
+    device: 0
+    language: en
     advIntervalSimulation: 25
     durationAdv: 2
     loadAdv: 0

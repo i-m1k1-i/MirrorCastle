@@ -1,4 +1,3 @@
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
@@ -57,7 +56,7 @@ public class InputReader : ScriptableObject, GameInput.IPlayerActions, GameInput
         if (context.performed)
         {
             SwitchDimensionEvent?.Invoke();
-            // Debug.Log("Switch dimension event");
+            // Debug.Log("Switch dimension performed");
         }
     }
 

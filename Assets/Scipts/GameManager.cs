@@ -40,6 +40,7 @@ public class GameManager : MonoBehaviour
     {
         Scene currentScene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(currentScene.buildIndex);
+        YG2.InterstitialAdvShow();
     }
 
     public void OpenLevelSelectorScene()

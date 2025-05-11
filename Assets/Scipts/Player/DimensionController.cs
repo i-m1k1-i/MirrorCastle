@@ -1,3 +1,4 @@
+using UnityEngine;
 public class DimensionController
 {
     private IHasLayer _hasLayer;
@@ -11,6 +12,7 @@ public class DimensionController
 
     public void Switch()
     {
+        Debug.Log("Switch dimension");
         if (_currentDimension == DimensionLayers.MirrorWorld)
         {
             _currentDimension = DimensionLayers.RealWorld;
