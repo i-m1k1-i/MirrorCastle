@@ -12,8 +12,6 @@ public class InputReader : ScriptableObject, GameInput.IPlayerActions, GameInput
     public event UnityAction SwitchDimensionEvent;
     public event UnityAction JumpEvent;
 
-    public event UnityAction RestartLevelEvent;
-    public event UnityAction LevelSelectorEvent;
     public event UnityAction PauseEvent;
 
 

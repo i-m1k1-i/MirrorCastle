@@ -4,8 +4,10 @@ using UnityEngine.SceneManagement;
 public class UIInteractionManager : MonoBehaviour
 {
     [SerializeField] private InputReader _input;
+
     [SerializeField] private GameObject _pauseMenuGO;
     [SerializeField] private GameObject _levelEndMenuGO;
+    [SerializeField] private GameObject _deathMenuGO;
 
     private bool _pauseableScene = false;
 
@@ -14,11 +16,17 @@ public class UIInteractionManager : MonoBehaviour
         _input.PauseEvent += TogglePauseMenu;
 
         SceneManager.sceneLoaded += OnSceneLoaded;
+        DeathZone.PlayerDied += EnableDeathMenu;
+        Level.LevelCompleted += EnableNextLevelMenu;
     }
 
     private void OnDisable()
     {
         _input.PauseEvent -= TogglePauseMenu;
+
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+        DeathZone.PlayerDied -= EnableDeathMenu;
+        Level.LevelCompleted -= EnableNextLevelMenu;
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode loadSceneMode)
@@ -26,43 +34,40 @@ public class UIInteractionManager : MonoBehaviour
         if (scene.name == GameManager.LevelSelectorScene || scene.name == GameManager.MainMenuScene)
         {
             _pauseableScene = false;
-            DisablePauseMenu();
         }
         else
         {
             _pauseableScene = true;
         }
+
+        DisablePauseMenu();
+        DisableNextLevelMenu();
+        DisableDeathMenu();
     }
 
     // Used in ui button OnClick
     public void RestartLevel()
     {
         GameManager.Instance.RestartLevel();
-
-        DisablePauseMenu();
-        DisableNextLevelMenu();
     }
 
     // Used in ui button OnClick
     public void OpenLevelSelectorScene()
     {
         GameManager.Instance.OpenLevelSelectorScene();
-
-        DisablePauseMenu();
-        DisableNextLevelMenu();
     }
 
     // Used in ui button OnClick
-    public void HandleNextLevelPressed()
+    public void LoadNextLevel()
     {
         Level level = FindAnyObjectByType<Level>();
         level.LoadNextLevel();
-        DisableNextLevelMenu();
     }
 
-    public void EnableNextLevelMenu()
+    private void EnableNextLevelMenu()
     {
         _levelEndMenuGO.SetActive(true);
+        GameManager.Instance.SetPause(true);
     }
 
     private void DisableNextLevelMenu()
@@ -70,14 +75,23 @@ public class UIInteractionManager : MonoBehaviour
         _levelEndMenuGO.SetActive(false);
     }
 
-    private void DisablePauseMenu()
+    private void EnableDeathMenu()
     {
-        _pauseMenuGO.SetActive(false);
-        GameManager.Instance.SetPause(false);
+        _deathMenuGO.SetActive(true);
     }
+
+    private void DisableDeathMenu()
+    {
+        _deathMenuGO.SetActive(false);
+    }
+
 
     private void TogglePauseMenu()
     {
+        if (_levelEndMenuGO.activeSelf || _deathMenuGO.activeSelf)
+        {
+            return;
+        }
         if (_pauseableScene == false)
         {
             return;
@@ -86,5 +100,11 @@ public class UIInteractionManager : MonoBehaviour
         _pauseMenuGO.SetActive(!_pauseMenuGO.activeSelf);
 
         GameManager.Instance.SetPause(_pauseMenuGO.activeSelf);
+    }
+
+    private void DisablePauseMenu()
+    {
+        _pauseMenuGO.SetActive(false);
+        GameManager.Instance.SetPause(false);
     }
 }

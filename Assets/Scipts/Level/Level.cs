@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 using YG;
 
@@ -9,6 +10,8 @@ public class Level : MonoBehaviour
     [SerializeField] private int _levelNumber;
 
     public int LevelNumber => _levelNumber;
+
+    public static event UnityAction LevelCompleted;
 
     private void Start()
     {
@@ -37,5 +40,11 @@ public class Level : MonoBehaviour
         }
 
         YG2.InterstitialAdvShow();
+    }
+
+    public void LevelEnd()
+    {
+        GameManager.Instance.UnlockLevel(LevelNumber + 1);
+        LevelCompleted?.Invoke();
     }
 }

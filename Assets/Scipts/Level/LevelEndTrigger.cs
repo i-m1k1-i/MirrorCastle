@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 
 [RequireComponent(typeof(BoxCollider2D))]
@@ -15,10 +16,7 @@ public class LevelEndTrigger : MonoBehaviour
         if (collision.TryGetComponent<Player>(out Player _))
         {
             Level level = FindAnyObjectByType<Level>();
-            GameManager.Instance.UnlockLevel(level.LevelNumber + 1);
-
-            UIInteractionManager uiManager = FindAnyObjectByType<UIInteractionManager>();
-            uiManager.EnableNextLevelMenu();
+            level.LevelEnd();
         }
     }
 }

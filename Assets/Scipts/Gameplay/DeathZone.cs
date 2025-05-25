@@ -10,7 +10,6 @@ public class DeathZone : MonoBehaviour
         if (other.TryGetComponent<Player>(out Player player))
         {
             PlayerDied?.Invoke();
-            GameManager.Instance.RestartLevel();
         }
     }
 }

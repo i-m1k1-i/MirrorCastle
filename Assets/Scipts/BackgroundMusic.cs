@@ -7,6 +7,8 @@ public class BackgroundMusic : MonoBehaviour, IPauseable
 
     private AudioSource _source;
 
+    public bool IsMuted => _source.mute;
+
     private void Awake()
     {
         if (Instance == null)
@@ -18,6 +20,11 @@ public class BackgroundMusic : MonoBehaviour, IPauseable
         {
             Destroy(gameObject);
         }
+    }
+
+    public void SetMute(bool mute)
+    {
+         _source.mute = mute;
     }
 
     public void Pause()

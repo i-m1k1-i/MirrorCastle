@@ -46,6 +46,7 @@ public class GameManager : MonoBehaviour
     public void OpenLevelSelectorScene()
     {
         SceneManager.LoadScene(LevelSelectorScene);
+        YG2.InterstitialAdvShow();
     }
 
     public void LastLevelCompleted()
@@ -58,13 +59,13 @@ public class GameManager : MonoBehaviour
         if (pause)
         {
             Time.timeScale = 0;
-            _backgroundMusic.Pause();
+            // _backgroundMusic.Pause();
             _input.DisablePlayerInput();
         }
         else
         {
             Time.timeScale = 1;
-            _backgroundMusic.UnPause();
+            // _backgroundMusic.UnPause();
             _input.EnablePlayerInput();
         }
     }
