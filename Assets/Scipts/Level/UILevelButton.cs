@@ -4,13 +4,12 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using YG;
 
-public class LevelButton : MonoBehaviour
+public class UILevelButton : MonoBehaviour
 {
     [SerializeField] private int _levelNumber;
     [SerializeField] private TextMeshProUGUI _levelText;
 
     private Button _button;
-
 
     private void Start()
     {
@@ -19,14 +18,15 @@ public class LevelButton : MonoBehaviour
         _button.interactable = YG2.saves.UnlockedLevel >= _levelNumber;
     }
 
-    private void LoadLevel()
-    {
-        SceneManager.LoadScene(Level.LevelNamePrefix + _levelNumber);
-    }
-
     public void SetLevel(int level)
     {
         _levelNumber = level;
         _levelText.text = level.ToString();
     }
+
+    private void LoadLevel()
+    {
+        SceneManager.LoadScene(Level.LevelNamePrefix + _levelNumber);
+    }
+
 }

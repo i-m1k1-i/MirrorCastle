@@ -9,6 +9,11 @@ public class Curtain : MonoBehaviour
     private int _allLiftCordAmount;
     private int _pulledLiftCordAmount;
 
+    private void OnEnable()
+    {
+        LiftCord.PulledDown += HandleLiftCordPullDown;
+    }
+
     private void Start()
     {
         _collider = GetComponent<BoxCollider2D>();
@@ -16,42 +21,26 @@ public class Curtain : MonoBehaviour
         _allLiftCordAmount = LiftCord.GetAmountOnScene();
     }
 
-    public void OpenUp()
+    private void OnDisable()
     {
-        _collider.isTrigger = true;
-        _animator.SetTrigger("OpenUp");
+        LiftCord.PulledDown -= HandleLiftCordPullDown;
     }
 
-    public void OpenDown()
+    public void Lift()
     {
         _collider.isTrigger = true;
-        _animator.SetTrigger("OpenDown");
+        _animator.SetTrigger("Lift");
     }
 
     private void HandleLiftCordPullDown()
     {
         _pulledLiftCordAmount++;
-        Debug.Log("Incremented");
+        // Debug.Log("Incremented");
 
-        if (IsAllLiftCordPulled())
+        if (_pulledLiftCordAmount == _allLiftCordAmount)
         {
-            OpenUp();
-            Debug.Log("Opened");
+            Lift();
+            // Debug.Log("Opened");
         }
-    }
-
-    private bool IsAllLiftCordPulled()
-    {
-        return _pulledLiftCordAmount == _allLiftCordAmount;
-    }
-
-    private void OnEnable()
-    {
-        LiftCord.PulledDown += HandleLiftCordPullDown;
-    }
-
-    private void OnDisable()
-    {
-        LiftCord.PulledDown -= HandleLiftCordPullDown;
     }
 }

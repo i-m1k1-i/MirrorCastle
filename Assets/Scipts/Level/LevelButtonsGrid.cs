@@ -9,7 +9,7 @@ public class LevelButtonsGrid : MonoBehaviour
     {
         Undo.RecordObject(this, "Set level buttons");
 
-        LevelButton[] levelButtons = GetComponentsInChildren<LevelButton>();
+        UILevelButton[] levelButtons = GetComponentsInChildren<UILevelButton>();
 
         for (int i = 0; i < levelButtons.Length; i++)
         {

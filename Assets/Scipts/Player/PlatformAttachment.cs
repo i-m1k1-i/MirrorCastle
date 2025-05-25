@@ -21,7 +21,7 @@ public class PlatformAttachment : MonoBehaviour
 
         transform.parent = _newParent = platform.transform;
 
-        Debug.Log("Attached");
+        // Debug.Log("Attached");
     }
 
     private void OnTriggerExit2D(Collider2D collider)

@@ -1,18 +1,17 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class UIInputHandler : MonoBehaviour
+public class UIInteractionManager : MonoBehaviour
 {
     [SerializeField] private InputReader _input;
     [SerializeField] private GameObject _pauseMenuGO;
+    [SerializeField] private GameObject _levelEndMenuGO;
 
-    private bool _canPauseInScene = false;
+    private bool _pauseableScene = false;
 
     private void OnEnable()
     {
         _input.PauseEvent += TogglePauseMenu;
-        _input.RestartLevelEvent += OnRestartLevel;
-        _input.LevelSelectorEvent += OnOpenLevelSelectorScene;
 
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
@@ -20,33 +19,55 @@ public class UIInputHandler : MonoBehaviour
     private void OnDisable()
     {
         _input.PauseEvent -= TogglePauseMenu;
-        _input.RestartLevelEvent -= OnRestartLevel;
-        _input.LevelSelectorEvent -= OnOpenLevelSelectorScene;
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode loadSceneMode)
     {
         if (scene.name == GameManager.LevelSelectorScene || scene.name == GameManager.MainMenuScene)
         {
-            _canPauseInScene = false;
+            _pauseableScene = false;
             DisablePauseMenu();
         }
         else
         {
-            _canPauseInScene = true;
+            _pauseableScene = true;
         }
     }
 
-    public void OnRestartLevel()
+    // Used in ui button OnClick
+    public void RestartLevel()
     {
         GameManager.Instance.RestartLevel();
+
         DisablePauseMenu();
+        DisableNextLevelMenu();
     }
 
-    public void OnOpenLevelSelectorScene()
+    // Used in ui button OnClick
+    public void OpenLevelSelectorScene()
     {
         GameManager.Instance.OpenLevelSelectorScene();
+
         DisablePauseMenu();
+        DisableNextLevelMenu();
+    }
+
+    // Used in ui button OnClick
+    public void HandleNextLevelPressed()
+    {
+        Level level = FindAnyObjectByType<Level>();
+        level.LoadNextLevel();
+        DisableNextLevelMenu();
+    }
+
+    public void EnableNextLevelMenu()
+    {
+        _levelEndMenuGO.SetActive(true);
+    }
+
+    private void DisableNextLevelMenu()
+    {
+        _levelEndMenuGO.SetActive(false);
     }
 
     private void DisablePauseMenu()
@@ -57,7 +78,7 @@ public class UIInputHandler : MonoBehaviour
 
     private void TogglePauseMenu()
     {
-        if (_canPauseInScene == false)
+        if (_pauseableScene == false)
         {
             return;
         }

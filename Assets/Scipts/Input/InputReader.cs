@@ -30,8 +30,6 @@ public class InputReader : ScriptableObject, GameInput.IPlayerActions, GameInput
         _input.Disable();
     }
 
-    // Player Actions
-
     public void EnablePlayerInput()
     {
         _input.Player.Enable();
@@ -41,6 +39,8 @@ public class InputReader : ScriptableObject, GameInput.IPlayerActions, GameInput
     {
         _input.Player.Disable();
     }
+
+    // Player Actions
 
     public void OnJump(InputAction.CallbackContext context)
     {
@@ -67,25 +67,7 @@ public class InputReader : ScriptableObject, GameInput.IPlayerActions, GameInput
 
     // UI Actions
 
-    public void OnRestartLevel(InputAction.CallbackContext context)
-    {
-        if (context.performed)
-        {
-            RestartLevelEvent?.Invoke();
-            Debug.Log("Restart level event");
-        }
-    }
-
-    public void OnLevelSelector(InputAction.CallbackContext context)
-    {
-        if (context.performed)
-        {
-            LevelSelectorEvent?.Invoke();
-            Debug.Log("Level selector event");
-        }
-    }
-
-    public void OnEscape(InputAction.CallbackContext context)
+    public void OnTogglePause(InputAction.CallbackContext context)
     {
         if (context.performed)
         {

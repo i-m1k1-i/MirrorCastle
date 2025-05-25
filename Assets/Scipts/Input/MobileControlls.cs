@@ -17,6 +17,11 @@ public class MobileControlls : MonoBehaviour
         }
     }
 
+    private void OnDestroy()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
     private void Enable()
     {
         gameObject.SetActive(true);
@@ -37,10 +42,5 @@ public class MobileControlls : MonoBehaviour
         {
             Enable();
         }
-    }
-
-    private void OnDestroy()
-    {
-        SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 }

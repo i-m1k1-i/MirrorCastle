@@ -16,7 +16,9 @@ public class LevelEndTrigger : MonoBehaviour
         {
             Level level = FindAnyObjectByType<Level>();
             GameManager.Instance.UnlockLevel(level.LevelNumber + 1);
-            level.LoadNextLevel();
+
+            UIInteractionManager uiManager = FindAnyObjectByType<UIInteractionManager>();
+            uiManager.EnableNextLevelMenu();
         }
     }
 }

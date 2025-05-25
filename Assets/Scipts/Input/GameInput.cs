@@ -215,25 +215,7 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
             ""id"": ""7bf0a524-c58e-4906-adfc-a43ee2c2e2f9"",
             ""actions"": [
                 {
-                    ""name"": ""RestartLevel"",
-                    ""type"": ""Button"",
-                    ""id"": ""a15a1684-fd5f-44bb-8c3a-27abce520c60"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""LevelSelector"",
-                    ""type"": ""Button"",
-                    ""id"": ""7eb8a8f9-7005-4a25-92bc-9801fc0192a0"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Escape"",
+                    ""name"": ""TogglePause"",
                     ""type"": ""Button"",
                     ""id"": ""062d3076-bd40-4eee-a633-05ecfd2f8020"",
                     ""expectedControlType"": """",
@@ -250,7 +232,7 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Escape"",
+                    ""action"": ""TogglePause"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -294,9 +276,7 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
         m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
-        m_UI_RestartLevel = m_UI.FindAction("RestartLevel", throwIfNotFound: true);
-        m_UI_LevelSelector = m_UI.FindAction("LevelSelector", throwIfNotFound: true);
-        m_UI_Escape = m_UI.FindAction("Escape", throwIfNotFound: true);
+        m_UI_TogglePause = m_UI.FindAction("TogglePause", throwIfNotFound: true);
     }
 
     ~@GameInput()
@@ -496,9 +476,7 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
     // UI
     private readonly InputActionMap m_UI;
     private List<IUIActions> m_UIActionsCallbackInterfaces = new List<IUIActions>();
-    private readonly InputAction m_UI_RestartLevel;
-    private readonly InputAction m_UI_LevelSelector;
-    private readonly InputAction m_UI_Escape;
+    private readonly InputAction m_UI_TogglePause;
     /// <summary>
     /// Provides access to input actions defined in input action map "UI".
     /// </summary>
@@ -511,17 +489,9 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
         /// </summary>
         public UIActions(@GameInput wrapper) { m_Wrapper = wrapper; }
         /// <summary>
-        /// Provides access to the underlying input action "UI/RestartLevel".
+        /// Provides access to the underlying input action "UI/TogglePause".
         /// </summary>
-        public InputAction @RestartLevel => m_Wrapper.m_UI_RestartLevel;
-        /// <summary>
-        /// Provides access to the underlying input action "UI/LevelSelector".
-        /// </summary>
-        public InputAction @LevelSelector => m_Wrapper.m_UI_LevelSelector;
-        /// <summary>
-        /// Provides access to the underlying input action "UI/Escape".
-        /// </summary>
-        public InputAction @Escape => m_Wrapper.m_UI_Escape;
+        public InputAction @TogglePause => m_Wrapper.m_UI_TogglePause;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -548,15 +518,9 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
         {
             if (instance == null || m_Wrapper.m_UIActionsCallbackInterfaces.Contains(instance)) return;
             m_Wrapper.m_UIActionsCallbackInterfaces.Add(instance);
-            @RestartLevel.started += instance.OnRestartLevel;
-            @RestartLevel.performed += instance.OnRestartLevel;
-            @RestartLevel.canceled += instance.OnRestartLevel;
-            @LevelSelector.started += instance.OnLevelSelector;
-            @LevelSelector.performed += instance.OnLevelSelector;
-            @LevelSelector.canceled += instance.OnLevelSelector;
-            @Escape.started += instance.OnEscape;
-            @Escape.performed += instance.OnEscape;
-            @Escape.canceled += instance.OnEscape;
+            @TogglePause.started += instance.OnTogglePause;
+            @TogglePause.performed += instance.OnTogglePause;
+            @TogglePause.canceled += instance.OnTogglePause;
         }
 
         /// <summary>
@@ -568,15 +532,9 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
         /// <seealso cref="UIActions" />
         private void UnregisterCallbacks(IUIActions instance)
         {
-            @RestartLevel.started -= instance.OnRestartLevel;
-            @RestartLevel.performed -= instance.OnRestartLevel;
-            @RestartLevel.canceled -= instance.OnRestartLevel;
-            @LevelSelector.started -= instance.OnLevelSelector;
-            @LevelSelector.performed -= instance.OnLevelSelector;
-            @LevelSelector.canceled -= instance.OnLevelSelector;
-            @Escape.started -= instance.OnEscape;
-            @Escape.performed -= instance.OnEscape;
-            @Escape.canceled -= instance.OnEscape;
+            @TogglePause.started -= instance.OnTogglePause;
+            @TogglePause.performed -= instance.OnTogglePause;
+            @TogglePause.canceled -= instance.OnTogglePause;
         }
 
         /// <summary>
@@ -673,25 +631,11 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
     public interface IUIActions
     {
         /// <summary>
-        /// Method invoked when associated input action "RestartLevel" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// Method invoked when associated input action "TogglePause" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnRestartLevel(InputAction.CallbackContext context);
-        /// <summary>
-        /// Method invoked when associated input action "LevelSelector" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
-        /// </summary>
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnLevelSelector(InputAction.CallbackContext context);
-        /// <summary>
-        /// Method invoked when associated input action "Escape" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
-        /// </summary>
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnEscape(InputAction.CallbackContext context);
+        void OnTogglePause(InputAction.CallbackContext context);
     }
 }

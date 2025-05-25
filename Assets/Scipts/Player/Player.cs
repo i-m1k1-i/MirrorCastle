@@ -22,12 +22,6 @@ public class Player : MonoBehaviour, IHasLayer
     private IMover _mover;
     private PlayerAnimationController _playerAnimatorController;
 
-    public void SetLayer(DimensionLayers layer)
-    {
-        gameObject.layer = (int)layer;
-        _feet.gameObject.layer = (int)layer;
-    }
-
     private void Awake()
     {
         var rb = GetComponent<Rigidbody2D>();
@@ -61,5 +55,11 @@ public class Player : MonoBehaviour, IHasLayer
     {
         _mover.Dispose();
         _playerAnimatorController.Dispose();
+    }
+
+    public void SetLayer(DimensionLayers layer)
+    {
+        gameObject.layer = (int)layer;
+        _feet.gameObject.layer = (int)layer;
     }
 }

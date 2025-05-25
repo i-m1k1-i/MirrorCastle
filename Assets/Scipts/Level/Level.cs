@@ -12,7 +12,10 @@ public class Level : MonoBehaviour
 
     private void Start()
     {
-        _levelNumber = int.Parse(SceneManager.GetActiveScene().name.Replace(LevelNamePrefix, ""));
+        // Scenes name format is "Level1", "Level2", etc.
+        string sceneName = SceneManager.GetActiveScene().name;
+        string sceneNameWithoutPrefix = sceneName.Replace(LevelNamePrefix, "");
+        _levelNumber = int.Parse(sceneNameWithoutPrefix);
     }
 
     public void LoadNextLevel()

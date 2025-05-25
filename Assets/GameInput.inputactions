@@ -129,25 +129,7 @@
             "id": "7bf0a524-c58e-4906-adfc-a43ee2c2e2f9",
             "actions": [
                 {
-                    "name": "RestartLevel",
-                    "type": "Button",
-                    "id": "a15a1684-fd5f-44bb-8c3a-27abce520c60",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "LevelSelector",
-                    "type": "Button",
-                    "id": "7eb8a8f9-7005-4a25-92bc-9801fc0192a0",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Escape",
+                    "name": "TogglePause",
                     "type": "Button",
                     "id": "062d3076-bd40-4eee-a633-05ecfd2f8020",
                     "expectedControlType": "",
@@ -164,7 +146,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Escape",
+                    "action": "TogglePause",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
